@@ -17,7 +17,7 @@ int ref_q_construct(
         return ERR;
     }
 
-    ref_q->capacity = capacity;
+    ref_q->space = capacity;
     ref_q->head = 0;
     ref_q->tail = 0;
     ref_q->data = tmp;
@@ -37,7 +37,7 @@ void ref_q_destruct(
 bool ref_q_full(
     const struct RefQueue* ref_q)
 {
-    return ref_q->count == ref_q->capacity;
+    return ref_q->count == ref_q->space;
 }
 
 bool ref_q_empty(
@@ -67,7 +67,7 @@ int ref_q_enqueue(
     ref_q->data[i] = value;
     incrOrLoopBack(
         &ref_q->tail,
-        ref_q->capacity
+        ref_q->space
     );
     ref_q->count++;
     return OK;
@@ -85,7 +85,7 @@ int ref_q_dequeue(
     *value = ref_q->data[i];
     incrOrLoopBack(
         &ref_q->head,
-        ref_q->capacity
+        ref_q->space
     );
     ref_q->count--;
     return OK;
@@ -110,5 +110,5 @@ size_t ref_q_count(
 size_t ref_q_capacity(
     const struct RefQueue* queue)
 {
-    return queue->capacity;
+    return queue->space;
 }

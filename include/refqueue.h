@@ -14,11 +14,9 @@ struct RefQueue
     size_t head;
     size_t tail;
     size_t count;
-    size_t capacity;
+    size_t space;
     void** data;
 };
-
-
 
 int ref_q_construct(
     struct RefQueue* ref_q,
