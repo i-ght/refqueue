@@ -1,1 +1,1 @@
-fixed size queue of reference data structure.
+fixed size queue of references, the data structure.
